@@ -1,0 +1,25 @@
+# Replace the domain. Caddy obtains the TLS certificate itself.
+modelsunset.dev {
+	encode zstd gzip
+	root * /srv/modelsunset/dist
+
+	@api path /api/subscribe /api/confirm /api/unsubscribe /api/me /api/manage /api/stripe /api/stats /api/health
+	handle @api {
+		reverse_proxy 127.0.0.1:8787
+	}
+	handle {
+		@data path /api/v1/* /feed.xml /calendar.ics /calendar/*
+		header @data Access-Control-Allow-Origin *
+		header @data Cache-Control "public, max-age=3600"
+		header /manage/* Referrer-Policy no-referrer
+		file_server
+	}
+	header {
+		X-Content-Type-Options nosniff
+		Content-Security-Policy "default-src 'self'; frame-ancestors 'none'"
+		-Server
+	}
+	log {
+		output discard
+	}
+}

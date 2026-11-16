@@ -1,0 +1,10 @@
+[Unit]
+Description=Run Model Sunset daily job
+
+[Timer]
+OnCalendar=*-*-* 06:10:00 UTC
+OnCalendar=*-*-* 18:10:00 UTC
+Persistent=true
+
+[Install]
+WantedBy=timers.target

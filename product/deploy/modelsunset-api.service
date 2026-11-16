@@ -1,0 +1,17 @@
+[Unit]
+Description=Model Sunset alert API
+After=network-online.target
+
+[Service]
+User=modelsunset
+WorkingDirectory=/srv/modelsunset/app/product
+EnvironmentFile=/etc/modelsunset.env
+ExecStart=/usr/bin/python3 -m sunset.server
+Restart=always
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/modelsunset
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

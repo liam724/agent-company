@@ -1,0 +1,9 @@
+[Unit]
+Description=Model Sunset daily: pull registry, rebuild site, send alerts
+
+[Service]
+Type=oneshot
+User=modelsunset
+WorkingDirectory=/srv/modelsunset/app/product
+EnvironmentFile=/etc/modelsunset.env
+ExecStart=/srv/modelsunset/app/product/deploy/daily.sh

@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "modelsunset"
+version = "0.1.0"
+description = "Find LLM model IDs in your code that are retired or about to be."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+keywords = ["llm", "deprecation", "model retirement", "ci"]
+
+[project.scripts]
+modelsunset = "sunset.scan:main"
+
+[tool.setuptools]
+packages = ["sunset"]

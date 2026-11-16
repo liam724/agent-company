@@ -1,0 +1,13 @@
+name: test
+on:
+  push:
+    paths: ["product/**", ".github/workflows/test.yml"]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: cd product && python -m unittest tests.test_all && python -m sunset.build /tmp/dist

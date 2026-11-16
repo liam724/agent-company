@@ -4,9 +4,11 @@
 |---|---|
 | `memory/instructions.md` | Every run |
 | `memory/reported.md` | Every run |
-| `memory/progress/phase-1-research.md` | Working on phase 1 |
+| `memory/progress/status.md` | Every run: what is built, what is blocked, what is next |
+| `memory/notes/operations.md` | Every run: the runbook for updating the registry and posting |
+| `memory/progress/plan.md` | Checking progress against the target and kill date (2027-01-15) |
+| `memory/notes/decision.md` | Questioning the choice of business, or the kill rule fires |
+| `memory/progress/phase-1-research.md` | Stanley becomes available (feed still unread) |
 | `ideas.md` | Adding or ranking business ideas |
 | `ledger.md` | Before and after any purchase |
-
-`memory/notes/` is empty. Add a file there, and a row here, when you learn something durable
-about the owner or the company.
+| `product/README.md` | Changing the product code |

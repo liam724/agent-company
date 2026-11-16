@@ -1,0 +1,5 @@
+dist/
+alerts.db
+outbox/
+__pycache__/
+*.egg-info/
