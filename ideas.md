@@ -1,10 +1,57 @@
 # Business ideas
 
-One section per idea. Keep the strongest at the top. Research date for all: 2026-11-16.
-Source caveat: Stanley (owner's X feed) was unreachable in the first run, so these come from
-web research only. Re-rank after the first successful feed read.
+One section per idea, strongest first. Sources: the owner's X feed read by Stanley on
+2026-11-16 (99 timeline posts Nov 13-16, 99 bookmarks Jul 29-Nov 15; likes not visible) and
+the open web. Feed themes, by frequency: AI-search optimisation (AEO), always-on background
+agents, agentic video workflows, B2B buying-signal scraping. Evidence for the vetted ideas is
+in `memory/notes/decision.md`.
 
-## 1. Model Sunset — verified LLM model-retirement feed and alerts (KILLED 2026-11-16)
+## 1. Connected Preflight — check and watch an MCP server against Google's Connected Apps rules (CHOSEN 2026-11-16)
+- Feed source: @elliot_garreffa, Oct 30 (Google Connected Apps for MCPs); the always-on agent cluster.
+- What it sells, and to whom: a free check of a public MCP endpoint against Google's published
+  Connected Apps standards and policy; paid ($9/mo) daily watch that alerts when the live
+  schema drifts from the snapshot Google took at registration. Buyers: teams submitting an
+  MCP server to Google Connected Console.
+- Why now: preview opened 2026-10-28. Google's docs say a schema change after registration
+  "may cause the application to be disabled", and dynamic dispatchers are banned by policy.
+- Competition read on their own pages: Manufact publish checks (ChatGPT/Claude only),
+  MCPJam, sunpeak, FlareCanary, Apify ToolDiff, GenAI Magazine's offline checker. None
+  tests a live endpoint against Google's rules.
+- How the agent runs it alone: re-read Google's docs on a schedule, update rules, run watches.
+- Cost to first revenue: domain (~$12) + VM + SMTP free tier.
+- Risks: preview is a US waitlist with few admitted developers; Manufact could add a Google
+  ruleset in a week; Google may ship its own linter.
+- First seen: 2026-11-16
+
+## 2. Stale Roles — list of long-open job postings from public ATS feeds (runner-up, gap NOT confirmed)
+- Feed source: @freddiexpott, Nov 1 (pitching companies with jobs open 21+ days; 3 closes at $8.5k).
+- What it sells: weekly list + CSV of roles open 21/45/90+ days by function, with alerts, to
+  recruiters and agencies.
+- Competition read: Mantiks shows "Job reposted - Active for 52 days" and sells alerts from
+  EUR 99/mo; TheirStack has date filters, closed-job filter, CSV and email alerts ($49/mo API);
+  Apify actors filter `openLongerThanDays` for $2-3 per 1,000; CSVFirst gives a free CSV of
+  days-open per company. The data and the filter exist; only the packaging is open.
+- Feasibility: Greenhouse, Lever and Ashby public job-board APIs answer without auth (tested).
+- First seen: 2026-11-16
+
+## 3. A paid Agent Skill on Capafy (runner-up, not vettable yet)
+- Feed source: @Capafyai, Oct 21 (CloneCut: $289K in 30 days).
+- Read on Capafy's GitHub docs: seller needs paid developer certification with KYC and a
+  bank payout; search API exposes sales counts. Marketplace pages (capafy.ai) were not read
+  before this run ended, so no gap is confirmed. Sales figures are uncorroborated.
+- First seen: 2026-11-16
+
+## Rejected on 2026-11-16
+- Markdown-for-agents checker (feed: @CrowdReply_io on Ramp's markdown test): Cloudflare's
+  isitagentready.com and at least five others check it free; monitoring sold at $19-99/mo by
+  agent-ready tools; the underlying claim is disputed by Otterly and Profound tests.
+- Connected Apps directory/tracker with alerts: free trackers exist for ChatGPT/Claude
+  (ROAST, Sitter); Google publishes its own list; nobody pays for it.
+- Podcast knowledge extraction (@DallasAptGP): needs paid LLM calls per customer from day one.
+- Agent-first 3D engine, subagent session forking, terminal video editing: already built by
+  the people posting, or not sellable inside $100.
+
+## Old: Model Sunset — verified LLM model-retirement feed and alerts (KILLED 2026-11-16)
 - Killed: the competition entry below was wrong. modelsunset.com, llmsunset.com,
   deprecations.info and sunsetlint.com already cover it, mostly free. See
   `memory/notes/decision.md`.
@@ -29,7 +76,7 @@ web research only. Re-rank after the first successful feed read.
   same; data errors would destroy the only differentiator (trust).
 - First seen: 2026-11-16
 
-## 2. Paid Apify Actors / MCP tools portfolio (raw idea, not vetted)
+## Old: Paid Apify Actors / MCP tools portfolio (raw idea, not vetted)
 - What it sells, and to whom: small pay-per-event scrapers/utilities to Apify users and agents.
 - Why now: Apify moved the store to pay-per-event (rental ended 2026-10-01), 80% payout,
   marketplace handles billing and discovery. https://docs.apify.com/platform/actors/publishing/monetize
@@ -39,7 +86,7 @@ web research only. Re-rank after the first successful feed read.
   results and $0 because all users were on the free plan. Crowded, thin margins.
 - First seen: 2026-11-16
 
-## 3. Agent-readiness monitoring for websites (raw idea, not vetted)
+## Old: Agent-readiness monitoring for websites (raw idea, not vetted)
 - What it sells, and to whom: recurring checks that a site stays usable by AI agents
   (llms.txt, robots rules, MCP card, structured data) with change alerts, for SaaS marketers.
 - Why now: lots of search interest in "agent ready" audits in 2026.
@@ -49,7 +96,7 @@ web research only. Re-rank after the first successful feed read.
   monitoring angle is open and buyers are marketers who expect support.
 - First seen: 2026-11-16
 
-## Rejected
+## Rejected earlier
 - AI-search visibility (GEO) tracker: dozens of funded tools from $25/mo to $6,000/mo, and
   it needs paid LLM API calls per customer from day one.
 - Generic uptime monitoring: commodity, free tiers everywhere.
