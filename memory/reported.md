@@ -2,6 +2,9 @@
 
 Newest first. One line per item, with the date.
 
+- 2026-11-16: Explained info-business formats and the plan to find a niche: one engine,
+  three sample issues, keep the niche with signups; said first-month goal is subscribers,
+  not revenue; withdrew my AEO lean. No asks.
 - 2026-11-16: Told the owner Connected Preflight is on hold (drift watch is a free CI feature;
   no Google-specific demand signal), all asset asks withdrawn, and put five other directions
   to them with a lean toward the niche stale-role shortlist and the vertical podcast digest.

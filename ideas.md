@@ -23,6 +23,14 @@ in `memory/notes/decision.md`.
   ruleset in a week; Google may ship its own linter.
 - First seen: 2026-11-16
 
+## Niche scorecard for the digest engine (owner-favoured direction, 2026-11-16)
+A niche qualifies only if: readers make money from the information (operators, investors,
+agency owners); 15+ active practitioner shows; no cross-show digest exists (read pages);
+there is a public place to reach readers that allows posts; sponsors already buy ads in the
+niche's shows. Candidates to score: multifamily operators, short-term-rental hosts,
+e-commerce/Amazon sellers, home-service contractors, independent insurance or dental
+practice owners, agency owners. Dropped: AEO (free newsletters and Otterly's sheet exist).
+
 ## Put to the owner on 2026-11-16 (none vetted to the binding rules yet)
 - Niche stale-role shortlist: weekly pitch-ready list for one buyer type (e.g. fractional
   RevOps consultants), sold as a paid email, not as data.
