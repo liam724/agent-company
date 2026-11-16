@@ -20,6 +20,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 STATIC = ROOT / "static"
 FREE_LIMIT = 3
 PRICE = "$5/month"
+SOON_DAYS = 120
 
 
 def cfg():
@@ -116,6 +117,8 @@ def build(out: pathlib.Path, today: dt.date | None = None) -> dict:
     verified = [p for p in reg["providers"] if p.get("verified")]
     pending = [p for p in reg["providers"] if not p.get("verified")]
     retiring = [m for m in models if m["status"] == "retiring"]
+    soon = [m for m in retiring if m["days_left"] <= SOON_DAYS]
+    later = [m for m in retiring if m["days_left"] > SOON_DAYS]
     watch = [m for m in models if m["status"] in ("deprecated", "active")]
     retired = [m for m in models if m["status"] == "retired"]
     datalist = '<datalist id="model-keys">' + "".join(
@@ -139,11 +142,12 @@ Model Sunset tracks every published retirement date, links each one to the provi
 <textarea id="paste" rows="5" placeholder='model="claude-sonnet-4-5-20250929"' spellcheck="false"></textarea>
 <div id="paste-result" aria-live="polite"></div></section>
 
-<section id="upcoming"><h2>Retiring next</h2>
-{table(retiring, names) if retiring else '<p>No firm retirement dates ahead.</p>'}
-<h2>Deprecated or active</h2>
+<section id="upcoming"><h2>Retiring in the next {SOON_DAYS} days</h2>
+{table(soon, names) if soon else '<p>No firm retirement dates in this window.</p>'}
+<details><summary>Retiring later ({len(later)})</summary>{table(later, names)}</details>
+<details><summary>Deprecated or active, no firm date ({len(watch)})</summary>
 <p class="muted">"Not before" is the earliest date a provider has said a model could be retired. It is not a retirement date.</p>
-{table(watch, names)}
+{table(watch, names)}</details>
 <details><summary>Already retired ({len(retired)})</summary>{table(retired, names)}</details></section>
 
 <section id="alerts"><h2>Get warned by email</h2>{subscribe_form()}{datalist}</section>

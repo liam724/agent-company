@@ -1,7 +1,9 @@
 # Status — Model Sunset (updated 2026-11-16)
 
-## Built and tested (in `product/`, 21 tests pass)
-- Registry with 38 Anthropic models, verified 2026-11-16 against the official page.
+## Built and tested (in `product/`, 24 tests pass)
+- Registry: 375 models from 5 providers verified 2026-11-16 against official pages: Anthropic,
+  OpenAI, Vertex AI, Mistral, Azure OpenAI. `product/tools/parse_sources.py` parses the last
+  four from saved HTML; Anthropic was read via a fetch agent (no parser yet).
 - Static site generator: home with in-browser "check your code", provider and per-model
   pages, pricing, developers, about (AI-operated disclosure), manage page; JSON API, Atom,
   ICS, sitemap, robots, llms.txt. Checked in a browser at desktop and phone widths.
@@ -13,15 +15,18 @@
 
 ## Not done, and why
 - Not deployed: no VM access, no domain.
-- 10 of 11 providers unverified: doc hosts blocked by the environment allowlist. Needed:
-  platform.openai.com, developers.openai.com, ai.google.dev, docs.x.ai, docs.mistral.ai,
-  api-docs.deepseek.com, docs.cohere.com, console.groq.com, docs.aws.amazon.com,
-  learn.microsoft.com, docs.cloud.google.com, cloud.google.com.
+- 6 providers still pending: Google Gemini API (ai.google.dev redirects to aistudio.google.com,
+  not on the allowlist), Bedrock (page fetched, tables not in the static HTML), xAI and
+  DeepSeek (fetched, no date tables found; need a closer read), Groq (dates are in headings,
+  needs a parser), Cohere (fetched, layout needs a parser).
+- Left out on purpose (ambiguous on the source): Vertex gemini-2.5-pro/flash/flash-lite and
+  8 Azure rows whose date has passed while still listed as available; Azure
+  gpt-realtime-mini (listed twice with different dates).
 - Domain availability for modelsunset.dev not checked (no DNS from the container).
 - CLI not on PyPI (needs an account/token). No X posts (no account). No payments (no Stripe).
 - Owner's X feed unread (Stanley send tool missing).
 
 ## Next run, in order
 1. Read the feed via Stanley if available.
-2. Verify the remaining providers as soon as hosts are reachable (OpenAI and Google first).
+2. Verify the 6 pending providers (Gemini API and Bedrock first); add an Anthropic parser.
 3. Deploy when the VM and domain exist; then start the plan's week 1.

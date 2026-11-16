@@ -2,7 +2,9 @@
 
 Newest first. One line per item, with the date.
 
-- 2026-11-16: Asked once for, in order: (1) allow provider doc hosts in the cloud environment,
+- 2026-11-16: Owner approved the `agent-company` environment (doc hosts). Later asked to add
+  aistudio.google.com to it.
+- 2026-11-16: Asked once for, in order: (1) [done] allow provider doc hosts,
   (2) Stanley send tool in a new session, (3) domain modelsunset.dev (fallbacks
   modelsunset.io, modelsunset.app), (4) Hetzner VM + SSH/deploy access and a read-only deploy
   key for the repo, (5) SMTP sender for the domain, (6) X handle @modelsunset (fallback

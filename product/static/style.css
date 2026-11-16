@@ -48,3 +48,4 @@ details{margin-top:16px}summary{cursor:pointer;color:var(--muted);margin-bottom:
 footer{color:var(--muted);font-size:14px;border-top:1px solid var(--line);margin-top:48px;padding-top:16px;padding-bottom:32px}
 footer a{margin-right:14px}
 @media (max-width:560px){.facts{grid-template-columns:1fr;gap:2px}.facts dd{margin-bottom:10px}}
+main p,main li,main dd{overflow-wrap:anywhere}

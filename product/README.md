@@ -10,6 +10,7 @@ Verified retirement dates for LLM API models, with alerts. Python 3.9+, standard
 | `sunset/alerts.py`, `sunset/server.py` | Email/webhook alerts: double opt-in, SQLite, Stripe webhook for Pro. |
 | `sunset/scan.py` | The `modelsunset` CLI (also served as a single file at `/cli/modelsunset.py`). |
 | `sunset/social.py` | Today's posts for the company X account. |
+| `tools/parse_sources.py` | Turns a saved official page into rows for `registry apply` (openai, vertex, mistral, azure). |
 | `deploy/` | Caddy, systemd units, installer, env template. |
 
 ```
@@ -24,7 +25,8 @@ python3 -m sunset.scan scan . --registry dist/api/v1/models.json
 
 1. A date enters the registry only if it was read on the provider's own page that day.
 2. `retires` is a firm date. "Not sooner than" commitments go in `not_before`.
-3. A provider without a `verified` date cannot have models (validation fails).
+3. A row whose meaning is unclear on the source is left out, not interpreted.
+4. A provider without a `verified` date cannot have models (validation fails).
 
 `rows.json` for `apply` is a list of
 `{"id", "state": active|deprecated|retired, "deprecated", "retires", "not_before", "replacement"}`.

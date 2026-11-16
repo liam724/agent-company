@@ -274,6 +274,50 @@ class Http(unittest.TestCase):
         server._hits.clear()
 
 
+class Parsers(unittest.TestCase):
+    def run_parser(self, name, html, today="2026-11-16"):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("ps", pathlib.Path(__file__).parent.parent / "tools/parse_sources.py")
+        ps = importlib.util.module_from_spec(spec); spec.loader.exec_module(ps)
+        t = ps.Tables(); t.feed(html)
+        return {r["id"]: r for r in ps.PARSERS[name](t.tables, D(today))}
+
+    def test_openai(self):
+        r = self.run_parser("openai", """<h2>Upcoming</h2><table><tr><th>Shutdown date</th><th>Affected model</th><th>Status</th><th>Recommended replacement</th><th>Notice date</th></tr>
+<tr><td>Dec 11, 2026</td><td>GPT-9 (<code>gpt-9</code>, gpt-9-2025-08-07)</td><td>Deprecated</td><td>gpt-10</td><td>Jun 11, 2026</td></tr>
+<tr><td>Soon</td><td>gpt-x-1</td><td>Deprecated</td><td>y</td><td>Jun 11, 2026</td></tr></table>
+<h2>Past</h2><table><tr><th>Shutdown date</th><th>Affected model or feature</th><th>Listed replacement</th><th>Notice date</th></tr>
+<tr><td>Sep 24, 2026</td><td>Videos API</td><td>None</td><td>Mar 24, 2026</td></tr>
+<tr><td>Jan 4, 2024</td><td>ada-code-001 Historical price $4.00 / 1M tokens</td><td>emb-3</td><td>Jul 6, 2023</td></tr>
+<tr><td>Jan 4, 2020</td><td>gpt-9</td><td>old</td><td>Jul 6, 2019</td></tr></table>""")
+        self.assertEqual(set(r), {"gpt-9", "gpt-9-2025-08-07", "ada-code-001"})
+        self.assertEqual((r["gpt-9"]["state"], r["gpt-9"]["retires"], r["gpt-9"]["deprecated"], r["gpt-9"]["replacement"]), ("deprecated", "2026-12-11", "2026-06-11", "gpt-10"))
+        self.assertEqual(r["ada-code-001"]["state"], "retired")
+
+    def test_vertex_soft_dates_and_ambiguous_rows(self):
+        head = "<tr><th>Model ID</th><th>Release date</th><th>Retirement date</th><th>Replacement model ID</th></tr>"
+        r = self.run_parser("vertex", f"""<h2>Gemini models</h2><table>{head}
+<tr><td>g-4</td><td>x</td><td>October 13, 2027 or later</td><td></td></tr><tr><td>g-emb</td><td>x</td><td>No sooner than May 20, 2028</td><td></td></tr>
+<tr><td>g-new</td><td>x</td><td>No retirement date announced</td><td></td></tr><tr><td>g-3</td><td>x</td><td>January 28, 2027</td><td>g-4</td></tr>
+<tr><td>g-2</td><td>x</td><td>October 20, 2026</td><td>g-4</td></tr></table>
+<summary>The following table lists the retired models</summary><table>{head}<tr><td>g-1@001*</td><td>x</td><td>June 1, 2026</td><td>g-3</td></tr></table>""")
+        self.assertEqual(set(r), {"g-4", "g-emb", "g-new", "g-3", "g-1@001"})  # g-2: past date but still listed -> left out
+        self.assertEqual((r["g-4"]["retires"], r["g-4"]["not_before"]), (None, "2027-10-13"))
+        self.assertEqual(r["g-emb"]["not_before"], "2028-05-20")
+        self.assertEqual((r["g-3"]["retires"], r["g-1@001"]["state"]), ("2027-01-28", "retired"))
+
+    def test_mistral_and_azure(self):
+        r = self.run_parser("mistral", """<h2>Deprecated &amp; retired models</h2><table>
+<tr><td>M Large</td><td>25.12</td><td>m-large-2512</td><td><span>10/31/2026</span><span>4/30/2027</span></td><td>M Large 4</td></tr>
+<tr><td>M Odd</td><td>1</td><td>m-odd</td><td>10/31/2026</td><td></td></tr></table>""")
+        self.assertEqual(list(r), ["m-large-2512"]); self.assertEqual((r["m-large-2512"]["deprecated"], r["m-large-2512"]["retires"]), ("2026-10-31", "2027-04-30"))
+        r = self.run_parser("azure", """<h2>Azure OpenAI</h2><table><tr><th>Model</th><th>Version</th><th>Lifecycle</th><th>Retirement date</th><th>Replacement</th></tr>
+<tr><td>g</td><td>1</td><td>GA</td><td>2027-04-14<sup>3</sup></td><td>—</td></tr><tr><td>g</td><td>0</td><td>Retired</td><td>2026-06-29</td><td>g2</td></tr>
+<tr><td>late</td><td>1</td><td>GA</td><td>2026-10-15</td><td>—</td></tr><tr><td>dup</td><td>1</td><td>GA</td><td>2027-01-01</td><td>—</td></tr><tr><td>dup</td><td>1</td><td>GA</td><td>2027-02-01</td><td>—</td></tr></table>
+<h2>Cohere</h2><table><tr><th>Model</th><th>Version</th><th>Lifecycle</th><th>Retirement date</th><th>Replacement</th></tr><tr><td>c</td><td>1</td><td>GA</td><td>2027-04-14</td><td>—</td></tr></table>""")
+        self.assertEqual(set(r), {"g@1", "g@0"}); self.assertEqual((r["g@1"]["retires"], r["g@1"]["replacement"], r["g@0"]["state"]), ("2027-04-14", None, "retired"))
+
+
 class Build(unittest.TestCase):
     def test_build_outputs(self):
         with tempfile.TemporaryDirectory() as d:
@@ -297,7 +341,7 @@ class Build(unittest.TestCase):
             for f in ("providers/anthropic/index.html", "models/anthropic/claude-2.1/index.html", "manage/index.html",
                       "cli/modelsunset.py", "calendar/anthropic.ics", "robots.txt", "llms.txt", "style.css"):
                 self.assertTrue((out / f).exists(), f)
-            self.assertFalse((out / "providers/openai").exists())  # unverified providers get no page
+            self.assertFalse((out / "providers/groq").exists())  # unverified providers get no page
 
 
 if __name__ == "__main__":

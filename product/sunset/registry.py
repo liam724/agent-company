@@ -115,6 +115,7 @@ def apply_snapshot(reg: dict, provider_id: str, rows: list[dict], today: dt.date
     """
     prov = next(p for p in reg["providers"] if p["id"] == provider_id)
     old = {m["id"]: m for m in reg["models"] if m["provider"] == provider_id}
+    first_import = not prov.get("verified")  # nothing to compare against: record no changes
     changes = []
     new_models = []
     for row in rows:
@@ -138,6 +139,8 @@ def apply_snapshot(reg: dict, provider_id: str, rows: list[dict], today: dt.date
         new_models.append(prev)
     reg["models"] = [m for m in reg["models"] if m["provider"] != provider_id] + new_models
     prov["verified"] = today.isoformat()
+    if first_import:
+        changes = []
     reg.setdefault("changes", []).extend(changes)
     validate(reg)
     return changes
