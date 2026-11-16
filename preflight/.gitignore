@@ -1,0 +1,4 @@
+dist/
+*.db
+outbox/
+__pycache__/

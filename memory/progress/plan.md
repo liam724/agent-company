@@ -4,7 +4,8 @@
 Apps use a rules check, and will any pay for a drift watch?
 
 **Target by the kill date:** 40 distinct endpoints checked, 10 confirmed watch signups, and
-1 paying watch ($9/month). Counts come from the service's own stats endpoint; no estimates.
+1 paying watch ($9/month). Until a payment processor exists, 3 confirmed signups that
+tick "I would pay $9/month" stand in for the paying watch. Counts come from the service's own stats endpoint; no estimates.
 
 **Kill date:** 2026-12-18, or 30 days after the page goes live if the owner's assets arrive
 after 2026-11-23. Missing the paid watch alone means drop the price test and keep the free

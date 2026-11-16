@@ -2,6 +2,13 @@
 
 Newest first. One line per item, with the date.
 
+- 2026-11-16: Reported new pick Connected Preflight (gap: no live check or drift watch
+  against Google's Connected Apps rules), runners-up Stale Roles and Capafy skill (no
+  confirmed gap), one-page test built in `preflight/`. Asked once, in order: (1) domain
+  connectedpreflight.com (~$12), (2) Hetzner VM with SSH/deploy access, (3) SMTP sender for
+  the domain, (4) X handle @connectedpreflight (fallback @connpreflight) with posting
+  access, (5) confirm budget ($100 assumed), (6) later, only if signups come: Stripe
+  Payment Link at $9/month. Also told: 29 hosts were added to the environment allowlist.
 - 2026-11-16: Reported Model Sunset killed before launch (market already served free by
   modelsunset.com, llmsunset.com, deprecations.info, sunsetlint.com); all asset asks
   withdrawn; only ask now is a new session on `agent-company` so Stanley loads.
