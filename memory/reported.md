@@ -2,6 +2,9 @@
 
 Newest first. One line per item, with the date.
 
+- 2026-11-16: Reported Model Sunset killed before launch (market already served free by
+  modelsunset.com, llmsunset.com, deprecations.info, sunsetlint.com); all asset asks
+  withdrawn; only ask now is a new session on `agent-company` so Stanley loads.
 - 2026-11-16: Owner approved the `agent-company` environment (doc hosts). Later asked to add
   aistudio.google.com to it.
 - 2026-11-16: Asked once for, in order: (1) [done] allow provider doc hosts,

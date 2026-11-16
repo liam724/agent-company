@@ -1,34 +1,44 @@
-# Decision: the company is Model Sunset (decided 2026-11-16)
+# Decision log
 
-## What
-A verified registry of LLM model retirement dates with alerts. Free: website, JSON API, Atom
-feed, ICS calendars, a CLI/CI scanner, email alerts for up to 3 models. Pro, $5/month:
-unlimited and wildcard watches, webhook/Slack delivery.
+## Current state (2026-11-16): no business chosen. Phase 1 must be redone.
 
-## Why this one
-- The agent's routine is the product. A scheduled run that re-reads official pages and diffs
-  them is exactly what I do anyway; no calls, contracts or support.
-- Real, recurring pain with dated evidence (see `ideas.md` #1): retired model IDs hard-fail,
-  notice periods are 9-60 days, and cloud platforms run different clocks.
-- Existing trackers are SEO pages that contradict each other. Trust is the open position:
-  every date links to the provider's page with a last-verified date, and I publish nothing I
-  could not read on the official source.
-- The company X account has honest, useful, automatable content: each retirement event.
-- Fits $100: one domain, the owner's VM, a free email tier.
+Model Sunset was chosen and killed on the same day, before any launch or spend.
 
-## Known weaknesses
-- Willingness to pay $5 is unproven; the first-month target is therefore mostly subscribers.
-- The feed input (owner's X feed via Stanley) was unavailable on decision day; the choice
-  rests on web research only.
+## Why Model Sunset was killed
+The owner pointed out that modelsunset.com exists. Reading it and its neighbours showed the
+market is already served, mostly for free:
+- modelsunset.com (ALEX SMART TECH LLC): same name, same pitch. Official-source links,
+  free 50-model alert watchlist, 90/30/7/1 reminders, local code scan, calendar, JSON feed.
+  35 models, 3 providers, donation-supported.
+- llmsunset.com: claims 2,186+ models, 21 providers, daily; free email/Slack/Teams alerts,
+  webhook and read-only API (page is behind a bot check; this is from its search snippet).
+- deprecations.info: free RSS/JSON feeds for 9 providers including Bedrock, Vertex, Azure.
+- sunsetlint.com: paid GitHub App that finds retiring IDs by file and line, and already
+  owns the "cloud platforms have their own dates" angle.
+- Two GitHub projects named model-sunset, plus PyPI llm-model-deprecation, depdesk, llm-sunset.
+Every differentiator in the original decision (alerts, feeds, source links, cloud clocks) is
+already offered free by someone. A $5 tier has nothing to sell.
 
-## Runners-up (switch order if the kill rule fires)
-1. Paid Apify Actors / MCP tools portfolio. Marketplace distribution and billing, $0 to
-   start; needs owner KYC; crowded.
-2. Agent-readiness monitoring for websites. Demand is visible but the audit is free
-   everywhere (Cloudflare); only monitoring is open.
+## What went wrong in phase 1 (do not repeat)
+- I never searched for the product's own name or the obvious "X tracker / X alerts" queries
+  with the alert feature in them; I wrote "none found offering alerts" from one search.
+- I judged competitors from search snippets instead of reading their pages.
+- I built for hours before a five-minute name check.
+- The owner's X feed, the intended idea source, was unread.
 
-## Operating principles for the product
-- Never publish a date not read from the provider's own page. Unverified provider = listed
-  as "pending", with no dates.
-- "Not sooner than" dates are shown as earliest-possible, never as retirement dates, and
-  never trigger countdown alerts.
+## Rules for the next pick (binding)
+1. Read the owner's feed via Stanley first. No pick without it unless the owner says so.
+2. Before choosing: search the candidate's name, "<thing> tracker", "<thing> alerts",
+   "<thing> API", "<thing> free", "<thing> github"; open and read the top five results.
+3. Write down one gap, confirmed absent on each competitor's own page, that someone pays for
+   today (name who, and what they pay). No confirmed gap, no pick.
+4. Check the name: .com, GitHub, PyPI/npm, X handle.
+5. Build nothing beyond a one-page test until 1-4 are written in this file.
+
+## Old runners-up (not vetted to the standard above)
+Paid Apify Actors / MCP tools; agent-readiness monitoring for websites. Treat as raw ideas.
+
+## Salvage
+`product/` stays in the repo: the registry/parsers, static generator, alert service and CLI
+are generic and tested. Reuse the alert service and site generator if the next business
+needs them. Nothing was deployed, published or bought.
