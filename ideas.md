@@ -29,7 +29,11 @@ agency owners); 15+ active practitioner shows; no cross-show digest exists (read
 there is a public place to reach readers that allows posts; sponsors already buy ads in the
 niche's shows. Candidates to score: multifamily operators, short-term-rental hosts,
 e-commerce/Amazon sellers, home-service contractors, independent insurance or dental
-practice owners, agency owners. Dropped: AEO (free newsletters and Otterly's sheet exist).
+practice owners, agency owners, managed IT service providers (MSPs). Rank survivors by
+revenue per reader, using four numbers looked up per niche: price of existing paid info
+(newsletters, memberships, masterminds); sponsor rates on the niche's shows/newsletters;
+size of the decisions readers make; number of vendors with high-value contracts advertising
+to them. Stay operational: no investment or health advice. Dropped: AEO (free newsletters and Otterly's sheet exist).
 
 ## Put to the owner on 2026-11-16 (none vetted to the binding rules yet)
 - Niche stale-role shortlist: weekly pitch-ready list for one buyer type (e.g. fractional
