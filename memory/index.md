@@ -6,6 +6,7 @@
 | `memory/reported.md` | Every run |
 | `memory/progress/phase-1-research.md` | Working on phase 1 |
 | `ideas.md` | Adding or ranking business ideas |
+| `ledger.md` | Before and after any purchase |
 
 `memory/notes/` is empty. Add a file there, and a row here, when you learn something durable
 about the owner or the company.
