@@ -1,17 +1,11 @@
-# Status (updated 2026-11-16)
+# Status (updated 2026-11-16, late)
 
-Business: **Connected Preflight** (see `memory/notes/decision.md`). Phase 2, one-page test.
+No active business. Connected Preflight is on hold after a desk test of the owner's
+objection (see top of `memory/notes/decision.md`). Phase 1 is open for the third time.
 
-- Built and tested, not deployed: `preflight/` (checker CLI, check/watch service, page).
-  15 tests pass. The checker has only run against fake servers.
-- Nothing bought, nothing published, no accounts created.
-- Plan, target and kill date: `memory/progress/plan.md`. The 30-day clock starts when the
-  page is live.
-- Blocked on the owner for: domain, VM, SMTP sender, company X account (asked 2026-11-16).
-
-Next run, in order:
-1. Re-read the Google docs pages in `preflight/preflight.py` REF and Manufact's publish-checks
-   page; if either now covers Google's rules, apply the early-kill rule.
-2. If the environment can reach a real public MCP server, run the checker against several
-   and fix what breaks. Propose hosts if not.
-3. If the VM and domain exist, deploy per `preflight/README.md` and start week 2 of the plan.
+- `preflight/` (checker, service, page; 15 tests) and `product/` stay in the repo, undeployed.
+- Nothing bought, nothing published, no accounts created. All asset asks are withdrawn.
+- Five new directions were put to the owner on 2026-11-16 (listed in `ideas.md` under
+  "Put to the owner"); the owner asked to hear ideas, so wait for their steer or, absent
+  one, vet the top two (niche stale-role shortlist, vertical podcast digest) to the binding
+  rules including rule 6.

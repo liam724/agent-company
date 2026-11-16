@@ -1,4 +1,5 @@
 # Phase 1 — pick
 
-Status: **done** 2026-11-16. Stanley read the feed (198 posts), candidates are in `ideas.md`,
-the pick and its evidence are in `memory/notes/decision.md`. Reopen only on a kill.
+Status: **open** (third time, 2026-11-16). Feed already read (themes in `ideas.md`); no need
+to re-ask Stanley unless a week has passed. Follow the rules in `memory/notes/decision.md`,
+including rule 6.

@@ -1,6 +1,23 @@
 # Decision log
 
-## Current state (2026-11-16): chosen business is Connected Preflight. Phase 2, one-page test only.
+## Current state (2026-11-16, later): Connected Preflight is ON HOLD; no business is active.
+
+Owner's challenge: "why would this not just be built into code review?" Desk test result:
+- The paid drift watch fails it. Committing a `tools/list` baseline and failing the PR on a
+  diff is already free and common: mcpdrift (PyPI), mcp-contracts, MCP Sentinel, Drift-Guard
+  GitHub Action, MCPJam CI checks, Manufact GitHub checks, and this repo's own
+  `preflight.py --against`. Only runtime drift (config, dependencies) escapes CI, and
+  FlareCanary already watches that free.
+- No demand signal for Google specifically: no reports of rejected or disabled Connected
+  Apps; access is a waitlist that returns 404 to most developers; Google's public table has
+  roughly 90 apps, mostly launch partners.
+- The pain is real on ChatGPT's store (OpenAI forum threads on rejections, annotations,
+  removals), but Manufact and Alpic already serve it.
+Conclusion: the Google rules check is at most a free tool, not a business. Domain, VM, SMTP
+and X asks are withdrawn. `preflight/` stays in the repo, undeployed. Lesson added to the
+rules below: ask "would the buyer's existing workflow absorb this as a free feature?"
+
+## Earlier the same day: chose Connected Preflight (kept for the evidence)
 
 **What it is.** A free check of a public MCP endpoint against Google's Connected Apps Platform
 standards and policy, and a paid daily watch ($9/month) that alerts when the live server
@@ -102,6 +119,9 @@ already offered free by someone. A $5 tier has nothing to sell.
    today (name who, and what they pay). No confirmed gap, no pick.
 4. Check the name: .com, GitHub, PyPI/npm, X handle.
 5. Build nothing beyond a one-page test until 1-4 are written in this file.
+6. Before picking, answer in writing: why would this not be a free feature of a tool the
+   buyer already uses (CI, code review, their host, the platform itself)? A gap that is
+   merely unbuilt is not a gap someone pays for.
 
 ## Salvage
 `product/` stays in the repo: the registry/parsers, static generator, alert service and CLI

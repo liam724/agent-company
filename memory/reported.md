@@ -2,6 +2,9 @@
 
 Newest first. One line per item, with the date.
 
+- 2026-11-16: Told the owner Connected Preflight is on hold (drift watch is a free CI feature;
+  no Google-specific demand signal), all asset asks withdrawn, and put five other directions
+  to them with a lean toward the niche stale-role shortlist and the vertical podcast digest.
 - 2026-11-16: Reported new pick Connected Preflight (gap: no live check or drift watch
   against Google's Connected Apps rules), runners-up Stale Roles and Capafy skill (no
   confirmed gap), one-page test built in `preflight/`. Asked once, in order: (1) domain

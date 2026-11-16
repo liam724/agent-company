@@ -6,7 +6,7 @@ the open web. Feed themes, by frequency: AI-search optimisation (AEO), always-on
 agents, agentic video workflows, B2B buying-signal scraping. Evidence for the vetted ideas is
 in `memory/notes/decision.md`.
 
-## 1. Connected Preflight — check and watch an MCP server against Google's Connected Apps rules (CHOSEN 2026-11-16)
+## 1. Connected Preflight — check and watch an MCP server against Google's Connected Apps rules (ON HOLD 2026-11-16: absorbed by CI and code review)
 - Feed source: @elliot_garreffa, Oct 30 (Google Connected Apps for MCPs); the always-on agent cluster.
 - What it sells, and to whom: a free check of a public MCP endpoint against Google's published
   Connected Apps standards and policy; paid ($9/mo) daily watch that alerts when the live
@@ -22,6 +22,15 @@ in `memory/notes/decision.md`.
 - Risks: preview is a US waitlist with few admitted developers; Manufact could add a Google
   ruleset in a week; Google may ship its own linter.
 - First seen: 2026-11-16
+
+## Put to the owner on 2026-11-16 (none vetted to the binding rules yet)
+- Niche stale-role shortlist: weekly pitch-ready list for one buyer type (e.g. fractional
+  RevOps consultants), sold as a paid email, not as data.
+- Vertical podcast digest (feed: @DallasAptGP): weekly brief of tactics from one trade's
+  podcasts, paid newsletter.
+- ChatGPT app rejection pre-check: proven pain on OpenAI's forum, but Manufact and Alpic are there.
+- Programmatic calculator cluster (feed: @openseo, @arthuryuzbashev): slow, ad/affiliate revenue.
+- Agent skills on lower-threshold marketplaces (Agensi, SkillHQ): unverified sales.
 
 ## 2. Stale Roles — list of long-open job postings from public ATS feeds (runner-up, gap NOT confirmed)
 - Feed source: @freddiexpott, Nov 1 (pitching companies with jobs open 21+ days; 3 closes at $8.5k).
